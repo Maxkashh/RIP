@@ -3,7 +3,7 @@ from operator import itemgetter
 
 
 class HardDisk:
-    """Дом+информация о владельце"""
+   
 
     def __init__(self, id, marka, price, pcc_id):
         self.id = id
@@ -13,7 +13,7 @@ class HardDisk:
 
 
 class PC:
-    """Улица"""
+   
 
     def __init__(self, id, name):
         self.id = id
@@ -21,17 +21,14 @@ class PC:
 
 
 class DiskPC:
-    """
-    'Дом-улица' для реализации
-    связи многие-ко-многим
-    """
+   
 
     def __init__(self, pcc_id,disk_id ):
         self.pcc_id = pcc_id
         self.disk_id = disk_id
 
 
-# Улицы
+
 pcs= [
     PC(1, 'Apple'),
     PC(2, 'Asus'),
@@ -42,7 +39,7 @@ pcs= [
     PC(33, 'Huawei'),
 ]
 
-# Владельцы домов
+
 disks = [
     HardDisk(1, 'Apple inc', 55000, 1),
     HardDisk(2, 'Atasi', 81000, 2),
@@ -67,7 +64,7 @@ disks_pcs = [
 
 
 def main():
-    """Основная функция"""
+   
 
     # Соединение данных один-ко-многим
     one_to_many = [(e.marka, e.price, d.name)
@@ -99,10 +96,10 @@ def main():
         d_emps = list(filter(lambda i: i[2] == d.name, one_to_many))
         if len(d_emps) > 0:
             d_sals = [sal for _, sal, _ in d_emps]
-            # Самое высокое здание - максимальное количество этажей на улице
+           
             d_sals_max = max(d_sals)
             res_12_unsorted.append((d.name, d_sals_max))
-    # Сортировка по количеству этвжей
+    
     res_12 = sorted(res_12_unsorted, key=itemgetter(1), reverse=True)
     print(res_12)
 
